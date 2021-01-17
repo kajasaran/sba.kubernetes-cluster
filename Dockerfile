@@ -1,19 +1,16 @@
-FROM ubuntu:16.04
+FROM python:3.7-alpine
 
-RUN apt-get update -y && \
-    apt-get install -y python-pip python-dev
 
-# We copy just the requirements.txt first to leverage Docker cache
-COPY ./requirements.txt /app/requirements.txt
+USER root
 
 WORKDIR /app
 
-RUN pip install -r requirements.txt
+ADD . /app
 
-COPY . /app
+RUN pip install --trusted-host pypi.python.org -r requirements.txt
 
-EXPOSE 7070
+EXPOSE 80
 
-ENTRYPOINT [ "python" ]
+ENV NAME World
 
-CMD [ "web.py" ]
+CMD ["python", "web.py"]
