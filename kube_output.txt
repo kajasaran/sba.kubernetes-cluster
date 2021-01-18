@@ -1,0 +1,14 @@
+[0;32mKubernetes master[0m is running at [0;33mhttps://127.0.0.1:32780[0m
+[0;32mKubeDNS[0m is running at [0;33mhttps://127.0.0.1:32780/api/v1/namespaces/kube-system/services/kube-dns:dns/proxy[0m
+
+To further debug and diagnose cluster problems, use 'kubectl cluster-info dump'.
+NAME         TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)   AGE
+kubernetes   ClusterIP   10.96.0.1    <none>        443/TCP   61m
+NAME                                READY   STATUS    RESTARTS   AGE
+flask-deployment-5c8c55fcc5-49np2   1/1     Running   0          31m
+flask-deployment-5c8c55fcc5-5nd25   1/1     Running   0          31m
+flask-deployment-5c8c55fcc5-pcdjv   1/1     Running   0          31m
+NAME               READY   UP-TO-DATE   AVAILABLE   AGE
+flask-deployment   3/3     3            3           31m
+NAME       STATUS   ROLES    AGE   VERSION
+minikube   Ready    master   61m   v1.19.4

@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flask-deployment
+spec:
+  selector:
+    matchLabels:
+      app: flask
+  replicas: 3 # tells deployment to run 3 pods matching the template
+  template:
+    metadata:
+      labels:
+        app: flask
+    spec:
+      containers:
+      - name: kubesba
+        image: sarankaja/kubesba
+        ports:
+        - containerPort: 80
