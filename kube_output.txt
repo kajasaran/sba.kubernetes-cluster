@@ -1,14 +1,169 @@
-[0;32mKubernetes master[0m is running at [0;33mhttps://127.0.0.1:32780[0m
-[0;32mKubeDNS[0m is running at [0;33mhttps://127.0.0.1:32780/api/v1/namespaces/kube-system/services/kube-dns:dns/proxy[0m
+[0;32mKubernetes master[0m is running at [0;33mhttps://127.0.0.1:32788[0m
+[0;32mKubeDNS[0m is running at [0;33mhttps://127.0.0.1:32788/api/v1/namespaces/kube-system/services/kube-dns:dns/proxy[0m
 
 To further debug and diagnose cluster problems, use 'kubectl cluster-info dump'.
-NAME         TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)   AGE
-kubernetes   ClusterIP   10.96.0.1    <none>        443/TCP   61m
-NAME                                READY   STATUS    RESTARTS   AGE
-flask-deployment-5c8c55fcc5-49np2   1/1     Running   0          31m
-flask-deployment-5c8c55fcc5-5nd25   1/1     Running   0          31m
-flask-deployment-5c8c55fcc5-pcdjv   1/1     Running   0          31m
-NAME               READY   UP-TO-DATE   AVAILABLE   AGE
-flask-deployment   3/3     3            3           31m
+NAME                  TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)        AGE
+flask-saran-service   NodePort    10.105.157.47   <none>        80:30001/TCP   2m30s
+kubernetes            ClusterIP   10.96.0.1       <none>        443/TCP        4h3m
+NAME                                     READY   STATUS    RESTARTS   AGE
+flask-saran-deployment-587fbcd7c-7vk8v   1/1     Running   0          2m30s
+flask-saran-deployment-587fbcd7c-9tb2l   1/1     Running   0          2m31s
+flask-saran-deployment-587fbcd7c-g9bdp   1/1     Running   0          2m31s
+NAME                     READY   UP-TO-DATE   AVAILABLE   AGE
+flask-saran-deployment   3/3     3            3           2m31s
 NAME       STATUS   ROLES    AGE   VERSION
-minikube   Ready    master   61m   v1.19.4
+minikube   Ready    master   22h   v1.19.4
+Name:         flask-saran-deployment-587fbcd7c-7vk8v
+Namespace:    default
+Priority:     0
+Node:         minikube/192.168.49.2
+Start Time:   Mon, 18 Jan 2021 15:04:46 -0500
+Labels:       app=flask
+              pod-template-hash=587fbcd7c
+Annotations:  <none>
+Status:       Running
+IP:           172.17.0.6
+IPs:
+  IP:           172.17.0.6
+Controlled By:  ReplicaSet/flask-saran-deployment-587fbcd7c
+Containers:
+  flask:
+    Container ID:   docker://c6cf8b5e399550bd63382e8abba748a333dc976e7908ecadf43da3d6c8f94aed
+    Image:          sarankaja/kubesba
+    Image ID:       docker-pullable://sarankaja/kubesba@sha256:e7a557a3d21604ffcbc0572c5d4c2126218d76321f613bc3f5f36a55b29b0ca2
+    Port:           80/TCP
+    Host Port:      0/TCP
+    State:          Running
+      Started:      Mon, 18 Jan 2021 15:04:52 -0500
+    Ready:          True
+    Restart Count:  0
+    Environment:    <none>
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from default-token-tnqpj (ro)
+Conditions:
+  Type              Status
+  Initialized       True 
+  Ready             True 
+  ContainersReady   True 
+  PodScheduled      True 
+Volumes:
+  default-token-tnqpj:
+    Type:        Secret (a volume populated by a Secret)
+    SecretName:  default-token-tnqpj
+    Optional:    false
+QoS Class:       BestEffort
+Node-Selectors:  <none>
+Tolerations:     node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                 node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Events:
+  Type    Reason     Age    From               Message
+  ----    ------     ----   ----               -------
+  Normal  Scheduled  2m30s  default-scheduler  Successfully assigned default/flask-saran-deployment-587fbcd7c-7vk8v to minikube
+  Normal  Pulling    2m27s  kubelet            Pulling image "sarankaja/kubesba"
+  Normal  Pulled     2m25s  kubelet            Successfully pulled image "sarankaja/kubesba" in 2.4394128s
+  Normal  Created    2m25s  kubelet            Created container flask
+  Normal  Started    2m24s  kubelet            Started container flask
+
+
+Name:         flask-saran-deployment-587fbcd7c-9tb2l
+Namespace:    default
+Priority:     0
+Node:         minikube/192.168.49.2
+Start Time:   Mon, 18 Jan 2021 15:04:46 -0500
+Labels:       app=flask
+              pod-template-hash=587fbcd7c
+Annotations:  <none>
+Status:       Running
+IP:           172.17.0.5
+IPs:
+  IP:           172.17.0.5
+Controlled By:  ReplicaSet/flask-saran-deployment-587fbcd7c
+Containers:
+  flask:
+    Container ID:   docker://d98f0d15f0b325665a8f0ec191a77ccd05101a8f1242ab0de6385c236705e02a
+    Image:          sarankaja/kubesba
+    Image ID:       docker-pullable://sarankaja/kubesba@sha256:e7a557a3d21604ffcbc0572c5d4c2126218d76321f613bc3f5f36a55b29b0ca2
+    Port:           80/TCP
+    Host Port:      0/TCP
+    State:          Running
+      Started:      Mon, 18 Jan 2021 15:04:51 -0500
+    Ready:          True
+    Restart Count:  0
+    Environment:    <none>
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from default-token-tnqpj (ro)
+Conditions:
+  Type              Status
+  Initialized       True 
+  Ready             True 
+  ContainersReady   True 
+  PodScheduled      True 
+Volumes:
+  default-token-tnqpj:
+    Type:        Secret (a volume populated by a Secret)
+    SecretName:  default-token-tnqpj
+    Optional:    false
+QoS Class:       BestEffort
+Node-Selectors:  <none>
+Tolerations:     node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                 node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Events:
+  Type    Reason     Age    From               Message
+  ----    ------     ----   ----               -------
+  Normal  Scheduled  2m30s  default-scheduler  Successfully assigned default/flask-saran-deployment-587fbcd7c-9tb2l to minikube
+  Normal  Pulling    2m27s  kubelet            Pulling image "sarankaja/kubesba"
+  Normal  Pulled     2m26s  kubelet            Successfully pulled image "sarankaja/kubesba" in 1.7691638s
+  Normal  Created    2m25s  kubelet            Created container flask
+  Normal  Started    2m25s  kubelet            Started container flask
+
+
+Name:         flask-saran-deployment-587fbcd7c-g9bdp
+Namespace:    default
+Priority:     0
+Node:         minikube/192.168.49.2
+Start Time:   Mon, 18 Jan 2021 15:04:46 -0500
+Labels:       app=flask
+              pod-template-hash=587fbcd7c
+Annotations:  <none>
+Status:       Running
+IP:           172.17.0.7
+IPs:
+  IP:           172.17.0.7
+Controlled By:  ReplicaSet/flask-saran-deployment-587fbcd7c
+Containers:
+  flask:
+    Container ID:   docker://c862ae15f0c9b989d9b15ee2a580cacfe5ffe2d97382d23882024923423955d6
+    Image:          sarankaja/kubesba
+    Image ID:       docker-pullable://sarankaja/kubesba@sha256:e7a557a3d21604ffcbc0572c5d4c2126218d76321f613bc3f5f36a55b29b0ca2
+    Port:           80/TCP
+    Host Port:      0/TCP
+    State:          Running
+      Started:      Mon, 18 Jan 2021 15:04:50 -0500
+    Ready:          True
+    Restart Count:  0
+    Environment:    <none>
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from default-token-tnqpj (ro)
+Conditions:
+  Type              Status
+  Initialized       True 
+  Ready             True 
+  ContainersReady   True 
+  PodScheduled      True 
+Volumes:
+  default-token-tnqpj:
+    Type:        Secret (a volume populated by a Secret)
+    SecretName:  default-token-tnqpj
+    Optional:    false
+QoS Class:       BestEffort
+Node-Selectors:  <none>
+Tolerations:     node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                 node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Events:
+  Type    Reason     Age    From               Message
+  ----    ------     ----   ----               -------
+  Normal  Scheduled  2m30s  default-scheduler  Successfully assigned default/flask-saran-deployment-587fbcd7c-g9bdp to minikube
+  Normal  Pulling    2m27s  kubelet            Pulling image "sarankaja/kubesba"
+  Normal  Pulled     2m26s  kubelet            Successfully pulled image "sarankaja/kubesba" in 1.1942962s
+  Normal  Created    2m26s  kubelet            Created container flask
+  Normal  Started    2m26s  kubelet            Started container flask
