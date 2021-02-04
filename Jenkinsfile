@@ -1,4 +1,4 @@
-lpipeline {
+pipeline {
 			agent any
 			environment {        
 				DOCKER_HUB_REPO = "sarankaja/casestudy"
