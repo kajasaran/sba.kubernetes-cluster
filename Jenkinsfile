@@ -40,11 +40,15 @@ pipeline {
              }
          }
               
-		
-				stage('Deploy to kubernetes'){
-					steps{
-						ansiblePlaybook credentialsId: 'kubernetes', disableHostKeyChecking: true, installation: 'ansible', playbook: 'playbook.yaml'
-					}
-				}
+			       stage('Deploy to Kubernetes') {
+               				 steps {
+						script {
+							sh 'cd ~'
+							sh 'git clone https://github.com/kajasaran/sba.kubernetes-cluster.git'
+							sh "minikube start --driver=docker"
+							sh 'kubectl apply -f ~/sba.kubernetes-cluster'
+							sh 'rm -r ~/sba.kubernetes-cluster'
+							echo "image buit successfuly"                   						
+				
 			}
 		}
