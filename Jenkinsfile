@@ -1,4 +1,4 @@
-pipeline {
+lpipeline {
 			agent any
 			environment {        
 				DOCKER_HUB_REPO = "sarankaja/casestudy"
@@ -44,7 +44,7 @@ pipeline {
 			stage('Deploy to playbook'){
 				steps{
 					script {
-						sh 'ansible-playbook test-playbook.yaml'
+						sh 'kubectl get pods'
 					}
 				}				
 			}
