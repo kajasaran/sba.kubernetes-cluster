@@ -40,11 +40,7 @@ pipeline {
              }
          }
               
-							
-							echo "Image pushed to repository"
-						}
-					}
-				}
+		
 				stage('Deploy to kubernetes'){
 					steps{
 						ansiblePlaybook credentialsId: 'kubernetes', disableHostKeyChecking: true, installation: 'ansible', playbook: 'playbook.yaml'
