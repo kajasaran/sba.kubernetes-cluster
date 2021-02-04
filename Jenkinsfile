@@ -40,15 +40,7 @@ pipeline {
              }
          }
               
-			      # stage('Deploy Kubernetes') {
-               				 # steps {
-						# script {
-							# sh 'cd ~'
-							# sh 'git clone https://github.com/kajasaran/sba.kubernetes-cluster.git'
-							# sh "minikube start --driver=docker"
-							# sh 'kubectl apply -f ~/sba.kubernetes-cluster'
-							# sh 'rm -r ~/sba.kubernetes-cluster'
-							# echo "image buit successfuly"                   						
+       						
 			stage('Deploy to playbook'){
 				steps{
 					script {
