@@ -13,14 +13,14 @@ pipeline {
 						}
 					}
 				}
-				stage('Cloning our Git'){
+				stage('Cloning Git'){
 					steps {
 						script{
 							sh 'git clone https://github.com/Kajasaran/2020_03_DO_Boston_casestudy_part_1.git' 
 						}		
 					}
 				}
-				stage('Building new image ') {
+				stage('Build docker image ') {
 					steps {
 						script {
 							sh 'docker image build -t $DOCKER_HUB_REPO:latest .'
@@ -40,15 +40,21 @@ pipeline {
              }
          }
               
-			       stage('Deploy to Kubernetes') {
-               				 steps {
-						script {
-							sh 'cd ~'
-							sh 'git clone https://github.com/kajasaran/sba.kubernetes-cluster.git'
-							sh "minikube start --driver=docker"
-							sh 'kubectl apply -f ~/sba.kubernetes-cluster'
-							sh 'rm -r ~/sba.kubernetes-cluster'
-							echo "image buit successfuly"                   						
-				
+			      # stage('Deploy Kubernetes') {
+               				 # steps {
+						# script {
+							# sh 'cd ~'
+							# sh 'git clone https://github.com/kajasaran/sba.kubernetes-cluster.git'
+							# sh "minikube start --driver=docker"
+							# sh 'kubectl apply -f ~/sba.kubernetes-cluster'
+							# sh 'rm -r ~/sba.kubernetes-cluster'
+							# echo "image buit successfuly"                   						
+			stage('Deploy to playbook'){
+				steps{
+					script {
+						sh 'ansible-playbook test-playbook.yaml'
+					}
+				}				
 			}
 		}
+	}
