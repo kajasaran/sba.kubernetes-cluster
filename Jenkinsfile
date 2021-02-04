@@ -42,15 +42,14 @@ pipeline {
               
    				stage('Deploy to playbook'){
 					steps{
-  						echo "image buit successfuly"
-  }
+  						ansiblePlaybook(playbook: 'test-playbook.yml')
 }
 
         						
 			stage('kube running successfully'){
 				steps{
 					script {
-						echo "image buit successfuly"
+						sh 'kubectl get services'
 					}
 				}				
 			}
