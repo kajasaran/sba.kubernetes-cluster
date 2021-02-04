@@ -29,23 +29,17 @@ pipeline {
 						}
 					}	
 				}
-				--stage('Pushing image to dockerhub'){
-					--steps {
-						--script {
-							--docker.withRegistry( '', REGISTRY_CREDENTIAL ) {
-								--sh 'docker push $DOCKER_HUB_REPO:$BUILD_NUMBER'
-								--sh 'docker push $DOCKER_HUB_REPO:latest'
-							stage('Push Docker Image') {
-                steps {
-                   withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'dockerhub', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD']]){
+			       stage('Push Docker Image') {
+               				 steps {
+                   				withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'dockerhub', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD']]){
 
-                    sh "docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD"
-                    sh "docker tag sarankaja/casestudy"
-                    sh 'docker push sarankaja/casestudy'
+                    						sh "docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD"
+                    						sh "docker tag sarankaja/casestudy"
+                    						sh 'docker push sarankaja/casestudy'
                  }
              }
          }
-              }
+              
 							
 							echo "Image pushed to repository"
 						}
