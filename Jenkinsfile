@@ -41,12 +41,14 @@ pipeline {
          }
               
    				stage('Startup activities'){
-  					echo "${env.KUBERNETES_API}"
- 					 withKubeConfig([credentialsId: kubernetesCredentials,
-                     			 serverUrl: "${env.KUBERNETES_API}"
-                     			 ]) {
+					steps{
+  						echo "${env.KUBERNETES_API}"
+ 					 	withKubeConfig([credentialsId: kubernetesCredentials,
+                     			 	serverUrl: "${env.KUBERNETES_API}"
+                     			 	]) {
         					sh "kubectl cluster-info"
   }
+}
 
   }      						
 			stage('Deploy to playbook'){
