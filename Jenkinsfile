@@ -39,12 +39,18 @@ pipeline {
                  }
              }
          }
-              
-   				stage('Deploy to playbook'){
-					steps{
-  						ansiblePlaybook(playbook: 'test-playbook.yml')
+                 		stage('Startup activities'){
+  					
+					 steps{
+  						
+ 					 	withKubeConfig([credentialsId: kubefile,
+                     			 	serverUrl: "https://127.0.0.1:32768"
+                     			 	]) {
+        					sh "kubectl cluster-info"
+  }
+   				
 }
-
+}
         						
 			stage('kube running successfully'){
 				steps{
