@@ -16,7 +16,7 @@ pipeline {
 				stage('Cloning Git'){
 					steps {
 						script{
-							sh 'git clone https://github.com/Kajasaran/2020_03_DO_Boston_casestudy_part_1.git' 
+							sh 'https://github.com/kajasaran/sba.kubernetes-cluster.git' 
 						}		
 					}
 				}
